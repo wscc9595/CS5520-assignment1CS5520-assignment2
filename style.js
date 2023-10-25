@@ -101,6 +101,11 @@ export const styleObj = {
           signWrapper:{
             flexDirection: 'row', // Horizontal arrangement
             alignItems: 'center',
+          },
+          plus:{
+            fontSize:30,
+            marginLeft:40,
+            marginRight: 12,
           }
       
 

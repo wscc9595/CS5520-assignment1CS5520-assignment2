@@ -7,6 +7,7 @@ import PressableButton from './components/PressableButton';
 import AddExpenses from './screens/AddExpenses';
 import styleObj from './style';
 import Home from './components/Home';
+import Edit from './screens/Edit';
 const Stack = createNativeStackNavigator();
 
 
@@ -16,6 +17,7 @@ export default function App() {
       <Stack.Navigator>
       <Stack.Screen name="Home" component={Home} options={{headerShown: false}} />
       <Stack.Screen name="Add An Expense" component={AddExpenses}/>
+      <Stack.Screen name="Edit" component={Edit}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
