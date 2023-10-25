@@ -78,6 +78,7 @@ export const styleObj = {
           },
           expenseWrapper: {
             marginRight: 12,
+            marginLeft: 12,
             backgroundColor: '#fff',
             width: 70,
             alignItems: "center",
@@ -96,8 +97,11 @@ export const styleObj = {
     alignItems: "center",
     backgroundColor: '#fff',
     paddingTop: 30,
+          },
+          signWrapper:{
+            flexDirection: 'row', // Horizontal arrangement
+            alignItems: 'center',
           }
-    
       
 
 }
