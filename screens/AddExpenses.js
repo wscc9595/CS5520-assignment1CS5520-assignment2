@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { styleObj } from '../style'
 import DropDownPicker from 'react-native-dropdown-picker';
 import PressableButton from '../components/PressableButton';
+import { writeToDB } from "../Firebase/firestoreHelper";
 
 export default function AddExpenses({navigation}) {
     const [open, setOpen] = useState(false);
@@ -28,6 +29,13 @@ export default function AddExpenses({navigation}) {
       return;
     }
     // will write to database
+    const data = {
+        itemName: itemName,
+        unitPrice: parseInt(unitPrice),
+        quantity: value
+      }
+      writeToDB(data);
+      navigation.pop();
 }
 const handleCancel = () => {
     navigation.pop()
