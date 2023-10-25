@@ -1,10 +1,10 @@
-import { StyleSheet, Text, View, TextInput} from 'react-native'
+import { StyleSheet, Text, View, TextInput, Alert} from 'react-native'
 import React, { useState } from 'react'
 import { styleObj } from '../style'
 import DropDownPicker from 'react-native-dropdown-picker';
 import PressableButton from '../components/PressableButton';
 
-export default function AddExpenses() {
+export default function AddExpenses({navigation}) {
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState(null);
     const [items, setItems] = useState([
@@ -19,18 +19,36 @@ export default function AddExpenses() {
         { label: '9', value: 9 },
         { label: '10', value: 10 },
       ]);
+      const [itemName, setItemName] = useState('');
+  const [unitPrice, setUnitPrice] = useState('');
+  const handleSavePress = () => {
+    // Validate user's entries here
+    if (!itemName.trim() || !unitPrice.trim() || isNaN(unitPrice) || parseInt(unitPrice) < 0) {
+      Alert.alert('Invalid Data', 'Please enter valid data.');
+      return;
+    }
+    // will write to database
+}
+const handleCancel = () => {
+    navigation.pop()
+  }
   return (
     <View style={styleObj.formcontainer}>
          <View style={styleObj.inputWrapper}>
         <Text style={styleObj.label}>Item*</Text>
         <TextInput
           style={styleObj.amountInput}
+          onChangeText={(text) => setItemName(text)}
+          value={itemName}
         />
       </View>
       <View style={styleObj.inputWrapper}>
         <Text style={styleObj.label}>Unit Price*</Text>
         <TextInput
           style={styleObj.amountInput}
+          onChangeText={(text) => setUnitPrice(text)}
+          value={unitPrice}
+          keyboardType="numeric"
         />
       </View>
       <View style={styleObj.inputWrapper}>
@@ -51,10 +69,10 @@ export default function AddExpenses() {
    
       </View>
       <View style={styleObj.pressableWrapper}>
-        <PressableButton defaultStyle={styleObj.formPressableDefault} pressedStyle={styleObj.formPressablePressed}>
+        <PressableButton defaultStyle={styleObj.formPressableDefault} pressedStyle={styleObj.formPressablePressed} pressedFunction={handleCancel}>
             <Text>Cancel</Text>
         </PressableButton>
-        <PressableButton defaultStyle={styleObj.formPressableDefault} pressedStyle={styleObj.formPressablePressed}>
+        <PressableButton defaultStyle={styleObj.formPressableDefault} pressedStyle={styleObj.formPressablePressed} pressedFunction={handleSavePress}> 
             <Text>Save</Text>
         </PressableButton>
 
