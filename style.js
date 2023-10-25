@@ -54,6 +54,49 @@ export const styleObj = {
             color: "#fff",
     fontSize: 16,
           },
+          entryDefault:{
+            backgroundColor: "#414497",
+    marginBottom: 15,
+    minHeight: 50,
+    alignItems: "center",
+    width: 320,
+    borderRadius: 5,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 5,
+    shadowOpacity: 0.3,
+    flexDirection: "row",
+    justifyContent: "space-between",
+          },
+          entryPressed:{
+            opacity: 0.6
+          },
+          itemTitle: {
+            color: "#b0b8f5",
+            fontSize: 16,
+            marginLeft: 12,
+            fontWeight: "600",
+          },
+          expenseWrapper: {
+            marginRight: 12,
+            backgroundColor: '#fff',
+            width: 70,
+            alignItems: "center",
+            borderRadius: 5,
+          },
+          expenseText: {
+            fontSize: 16,
+            fontWeight: "600",
+            color: "#414497",
+            marginVertical: 2,
+          },
+          entryContainer:{
+            display: "flex",
+    flex: 1,
+    flexDirection: "column",
+    alignItems: "center",
+    backgroundColor: '#fff',
+    paddingTop: 30,
+          }
     
       
 
