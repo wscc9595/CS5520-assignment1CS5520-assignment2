@@ -1,14 +1,34 @@
 import { FlatList, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PressableButton from './PressableButton'
 import { styleObj } from '../style'
 import { AntDesign } from '@expo/vector-icons'; 
 import Edit from '../screens/Edit'
 import { useNavigation } from '@react-navigation/native';
+import { collection, onSnapshot, where, query } from 'firebase/firestore';
+import { database } from '../Firebase/firebaseSetup';
 
 
-export default function EntriesList({expenses}) {
+export default function EntriesList({overbudget}) {
   const navigation = useNavigation()
+  const [expenses, setExpenses] = useState([])
+  useEffect(() => {
+    let q = collection(database, "Expenses");
+    if (overbudget){
+      q = query(collection(database, "Expenses"), where("overbudget", "==", true));
+    }
+    
+    onSnapshot(q, (querySnapshot) => {
+      if (!querySnapshot.empty) {
+        let newArray = [];
+        // use a for loop to call .data() on each item of querySnapshot.docs
+        querySnapshot.docs.forEach((docSnap) => {
+          newArray.push({ ...docSnap.data(), id: docSnap.id });
+        });
+        setExpenses(newArray);
+      }
+    });
+  }, []);
   return (
     <FlatList
     data={expenses}

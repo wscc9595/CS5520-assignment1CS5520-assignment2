@@ -22,6 +22,8 @@ export default function AddExpenses({navigation}) {
       ]);
       const [itemName, setItemName] = useState('');
   const [unitPrice, setUnitPrice] = useState('');
+  const [limit, setLimit] = useState(500);
+  const overbudget = parseInt(unitPrice) * value > limit;
   const handleSavePress = () => {
     // Validate user's entries here
     if (!itemName.trim() || !unitPrice.trim() || isNaN(unitPrice) || parseInt(unitPrice) < 0) {
@@ -32,8 +34,10 @@ export default function AddExpenses({navigation}) {
     const data = {
         itemName: itemName,
         unitPrice: parseInt(unitPrice),
-        quantity: value
+        quantity: value,
+        overbudget: overbudget
       }
+    
       writeToDB(data);
       navigation.pop();
 }

@@ -12,21 +12,21 @@ import { styleObj } from "../style"
 export default function AllExpenses() {
     const [allExpenses, setAllExpenses] = useState([])
 
-    useEffect(() => {
-        onSnapshot(collection(database, "Expenses"), (querySnapshot) => {
-          if (!querySnapshot.empty) {
-            let newArray = [];
-            // use a for loop to call .data() on each item of querySnapshot.docs
-            querySnapshot.docs.forEach((docSnap) => {
-              newArray.push({ ...docSnap.data(), id: docSnap.id });
-            });
-            setAllExpenses(newArray);
-          }
-        });
-      }, []);
+    // useEffect(() => {
+    //     onSnapshot(collection(database, "Expenses"), (querySnapshot) => {
+    //       if (!querySnapshot.empty) {
+    //         let newArray = [];
+    //         // use a for loop to call .data() on each item of querySnapshot.docs
+    //         querySnapshot.docs.forEach((docSnap) => {
+    //           newArray.push({ ...docSnap.data(), id: docSnap.id });
+    //         });
+    //         setAllExpenses(newArray);
+    //       }
+    //     });
+    //   }, []);
   return (
    <View style={styleObj.entryContainer}>
-    <EntriesList expenses={allExpenses}></EntriesList>
+    <EntriesList overbudget={false}></EntriesList>
    </View>)
   
 }
