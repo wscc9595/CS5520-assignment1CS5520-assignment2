@@ -2,9 +2,9 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import AddExpenses from './AddExpenses'
 
-export default function Edit() {
+export default function Edit({navigation,route}) {
   return (
-    <AddExpenses />
+    <AddExpenses route={route} navigation={navigation}/>
   )
 }
 

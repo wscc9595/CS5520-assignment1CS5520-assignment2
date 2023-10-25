@@ -106,7 +106,12 @@ export const styleObj = {
             fontSize:30,
             marginLeft:40,
             marginRight: 12,
-          }
+          },
+          // Pressed:{
+          //   backgroundColor: "#414497",
+          //   opacity:0.6
+          // }
+          
       
 
-}
+};

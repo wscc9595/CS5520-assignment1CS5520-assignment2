@@ -34,7 +34,7 @@ export default function EntriesList({overbudget}) {
     data={expenses}
     renderItem={({ item }) => {
       return (
-        <PressableButton defaultStyle={styleObj.entryDefault} pressedStyle={styleObj.entryPressed} pressedFunction={()=>{navigation.navigate("Edit")}}>
+        <PressableButton defaultStyle={styleObj.entryDefault} pressedStyle={styleObj.entryPressed} pressedFunction={()=>{navigation.navigate("Edit",item)}}>
             <Text style={styleObj.itemTitle}>{item.itemName}</Text>
             <View style={styleObj.signWrapper}>
             {item.overbudget === true && <AntDesign name="warning" size={24} color="#fff" />}
